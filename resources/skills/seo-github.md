@@ -43,21 +43,23 @@ Use this workflow when the user asks:
 Run scripts from `<SKILL_DIR>/scripts/`:
 
 ```bash
-python3 github_repo_audit.py --repo <owner/repo> --json
+python3 github_repo_audit.py --repo <owner/repo> --provider auto --json
 python3 github_readme_lint.py README.md --json
-python3 github_community_health.py --repo <owner/repo> --json
-python3 github_search_benchmark.py --repo <owner/repo> --query "<query>" --json
-python3 github_traffic_archiver.py --repo <owner/repo> --json
-python3 github_seo_report.py --repo <owner/repo> --markdown GITHUB-SEO-REPORT.md
+python3 github_community_health.py --repo <owner/repo> --provider auto --json
+python3 github_search_benchmark.py --repo <owner/repo> --query "<query>" --provider auto --json
+python3 github_traffic_archiver.py --repo <owner/repo> --provider auto --json
+python3 github_seo_report.py --repo <owner/repo> --provider auto --markdown GITHUB-SEO-REPORT.md
 ```
 
 ### 3. Analyze by Area
 
 - Metadata discoverability: repo name, description, topics, homepage, social preview.
+- Title strategy: underscore vs hyphen checks, intent-keyword extraction, suggested slug/title.
 - README SEO and conversion: heading structure, intent alignment, CTAs, proof sections.
 - Community trust: governance files and contribution readiness.
 - Search benchmarking: target query positions and competitor gap signals.
 - Traffic trend readiness: archival freshness and retention compliance.
+- Backlink distribution: channel suggestions (Medium/blog/dev communities), post title ideas, and anchor-mix guidance.
 
 ### 4. Prioritize
 
