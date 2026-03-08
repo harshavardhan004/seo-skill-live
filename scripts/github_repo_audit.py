@@ -274,12 +274,12 @@ def build_audit(repo: str, token: str, cwd: str, provider: str) -> dict:
         }
 
     findings = report["findings"]
+    report["title_analysis"] = analyze_title_strategy(repo_slug=repo, metadata=report["metadata"] or {})
 
     # Metadata checks
     if report["metadata"]:
         md = report["metadata"]
-        title_analysis = analyze_title_strategy(repo_slug=repo, metadata=md)
-        report["title_analysis"] = title_analysis
+        title_analysis = report["title_analysis"]
         description = (md.get("description") or "").strip()
         topics = md.get("topics") or []
         pushed_days = days_since(md.get("pushed_at"))
@@ -391,6 +391,31 @@ def build_audit(repo: str, token: str, cwd: str, provider: str) -> dict:
                 "Repository title can be better aligned to search intent keywords.",
                 f"Suggested slug: `{suggested_slug}` | Suggested title: `{title_analysis.get('recommended_display_title')}`",
                 "Consider renaming repository slug and updating description/topics to reflect the suggested intent keywords.",
+            )
+    else:
+        title_analysis = report["title_analysis"]
+        if title_analysis.get("current_has_underscore"):
+            add_finding(
+                findings,
+                "Metadata",
+                "Warning",
+                "Likely",
+                "Repository slug uses underscore separators.",
+                f"Current repository name: `{title_analysis.get('current_name')}` (derived from slug)",
+                "Prefer hyphen-separated words in repository slug for clearer token separation in search indexing.",
+            )
+
+        suggested_slug = title_analysis.get("recommended_repo_slug", "")
+        current_name = (title_analysis.get("current_name") or "").lower()
+        if suggested_slug and current_name and suggested_slug != current_name:
+            add_finding(
+                findings,
+                "Metadata",
+                "Info",
+                "Likely",
+                "Repository title can be better aligned to intent terms.",
+                f"Suggested slug: `{suggested_slug}` | Suggested title: `{title_analysis.get('recommended_display_title')}`",
+                "Review slug/title recommendations and align repository naming with high-intent keywords.",
             )
 
     # Community profile checks from API
