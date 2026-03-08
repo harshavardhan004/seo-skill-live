@@ -1,17 +1,17 @@
 ---
 name: seo
 description: >
-  Deterministic LLM-first SEO audits for websites and blog posts. Use this when
-  the user asks to "perform SEO analysis", "run SEO audit", "analyze SEO",
-  "check technical SEO", "review schema", "Core Web Vitals", "E-E-A-T",
-  "hreflang", "GEO", or similar SEO requests with a URL. For full/page audits,
-  run the bundled scripts for evidence and return prioritized, confidence-labeled
-  fixes.
+  Deterministic LLM-first SEO audits for websites, blog posts, and GitHub
+  repositories. Use this when the user asks to "perform SEO analysis", "run SEO
+  audit", "analyze SEO", "check technical SEO", "review schema", "Core Web
+  Vitals", "E-E-A-T", "hreflang", "GEO", "AEO", or GitHub repository SEO
+  optimization. For full/page/repo audits, run bundled scripts for evidence and
+  return prioritized, confidence-labeled fixes.
 ---
 
 # SEO Skill (Agentic / Claude / Codex)
 
-LLM-first SEO analysis skill with 13 specialized sub-skills and specialist agents for complete website, blog, and GitHub repository optimization.
+LLM-first SEO analysis skill with 16 specialized sub-skills, 10 specialist agents, and 33 scripts for website, blog, and GitHub repository optimization.
 
 ## Deterministic Trigger Mapping
 

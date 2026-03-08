@@ -1,12 +1,32 @@
 # SEO Skill (Antigravity / Claude / Codex)
 
-An LLM-first SEO analysis skill for agent IDEs, with 13 specialized sub-skills, specialist agents, and optional utility scripts used as evidence collectors.
+An LLM-first SEO analysis skill for agent IDEs, with 16 specialized sub-skills, 10 specialist agents, and 33 scripts used as evidence collectors and workflow automation.
 
 ## IDE Compatibility
 
 - Antigravity IDE (`.agent/skills/seo`)
 - Claude Code (`~/.claude/skills/seo`)
 - Codex (`~/.codex/skills/seo`)
+
+## 📦 Current Inventory
+
+- Specialized sub-skills: `16`
+- Specialist agents: `10`
+- Scripts in `scripts/`: `33` (`32` Python + `1` shell validation helper)
+
+## 🐙 GitHub SEO Metadata
+
+Recommended GitHub repository description (About field):
+
+```text
+LLM-first SEO skill for Antigravity, Claude, and Codex with 16 sub-skills, 10 specialist agents, and GitHub SEO workflows that output GITHUB-SEO-REPORT.md and GITHUB-ACTION-PLAN.md.
+```
+
+Suggested GitHub topics:
+
+```text
+seo, llm, github-seo, ai-search, geo, aeo, technical-seo, schema, core-web-vitals, codex, claude-code, antigravity
+```
 
 
 ## ✨ Features
@@ -59,6 +79,10 @@ The rubric standardizes:
 - **Schema Markup** — JSON-LD detection, validation, generation
 - **Sitemap** — XML sitemap validation, quality gates
 - **Visual Analysis** — screenshots, above-the-fold, responsiveness (Playwright)
+- **GitHub Analyst** — metadata, topics, README, trust, title strategy
+- **GitHub Benchmark** — query ranking and competitor intelligence
+- **GitHub Data** — API/auth fallback and traffic archival continuity
+- **Verifier (Global)** — dedupe/contradiction suppression before final reporting
 
 ## 📚 Reference Data (Updated Feb 2026)
 
@@ -183,7 +207,7 @@ Here's how specific phrases map to the skill's capabilities:
 
 | You type... | Scope | Agent(s) activated | Scripts used |
 |-------------|-------|-------------------|--------------|
-| "Run SEO audit" | 🌐 Full domain | **All 6 agents** (technical, content, schema, performance, sitemap, visual) | `parse_html.py`, `pagespeed.py`, `robots_checker.py`, `security_headers.py`, `broken_links.py`, `readability.py` |
+| "Run SEO audit" | 🌐 Full domain | **All 6 core website agents** (technical, content, schema, performance, sitemap, visual) | `parse_html.py`, `pagespeed.py`, `robots_checker.py`, `security_headers.py`, `broken_links.py`, `readability.py` |
 | "Analyze this article" / blog post URL | 📄 Single page | **Content** + **Schema** + **Technical** | `article_seo.py`, `parse_html.py`, `readability.py` |
 | "Check technical SEO" | 🔧 Technical only | **Technical** | `robots_checker.py`, `security_headers.py`, `redirect_checker.py`, `parse_html.py` |
 | "Review content quality" / "E-E-A-T" | 📝 Content only | **Content** | `article_seo.py`, `readability.py`, `entity_checker.py` |
@@ -201,7 +225,7 @@ Here's how specific phrases map to the skill's capabilities:
 | "Find content gaps" / "competitor analysis" | 📊 Gap analysis | None (LLM reasoning) | `competitor_gap.py` |
 | "Check for duplicates" / "thin content" | 📋 Dupe check | **Content** | `duplicate_content.py` |
 | "GSC data" / "Search Console" | 📈 GSC only | None | `gsc_checker.py` |
-| "GitHub SEO" / "optimize this repo" | 🐙 Repository | **GitHub Analyst** + **Benchmark** + **Data** | `github_repo_audit.py`, `github_readme_lint.py`, `github_community_health.py`, `github_search_benchmark.py`, `github_competitor_research.py`, `github_traffic_archiver.py`, `github_seo_report.py` |
+| "GitHub SEO" / "optimize this repo" | 🐙 Repository | **GitHub Analyst** + **Benchmark** + **Data** + **Verifier** | `github_repo_audit.py`, `github_readme_lint.py`, `github_community_health.py`, `github_search_benchmark.py`, `github_competitor_research.py`, `github_traffic_archiver.py`, `github_seo_report.py`, `finding_verifier.py` (outputs `GITHUB-SEO-REPORT.md` + `GITHUB-ACTION-PLAN.md`) |
 
 ### Domain vs URL vs Blog Post — What's Different?
 
