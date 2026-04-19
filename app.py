@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 import subprocess
+import traceback
 
 app = Flask(__name__)
 
@@ -15,11 +16,23 @@ def seo_audit():
         return {"error": "URL parameter missing"}, 400
 
     try:
-        subprocess.run(["python", "scripts/generate_report.py", url])
-        return {"status": "Report Generated", "url": url}
+        result = subprocess.run(
+            ["python", "scripts/generate_report.py", url],
+            capture_output=True,
+            text=True
+        )
+
+        return {
+            "status": "Report Generated",
+            "output": result.stdout,
+            "error": result.stderr
+        }
 
     except Exception as e:
-        return {"error": str(e)}, 500
+        return {
+            "error": str(e),
+            "trace": traceback.format_exc()
+        }, 500
 
 
 if __name__ == "__main__":
